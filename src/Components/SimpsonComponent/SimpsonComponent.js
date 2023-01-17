@@ -2,15 +2,17 @@ import React from 'react';
 import './SimpsonComponent.css'
 
 export const SimpsonComponent = (props) => {
-    let {itemName, pic, text} = props
+    let {itemName, pic,id,status,species,gender} = props
     let classNameItem = 'card'
     let classNamePic = 'picture'
     return (
 
         <div className={classNameItem}>
-            <h2>{itemName}</h2>
+            <h2>{id} {itemName}</h2>
             <img className={classNamePic} src={pic}/>
-            <b>{text}</b>
+            <b>Species - {species}</b>
+            <b>Gender - {gender}</b>
+            <b>Status - {status}</b>
 
         </div>
     )

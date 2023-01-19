@@ -7,6 +7,7 @@ import User from "../User/User";
 const Users = () => {
 
     const [users, setUsers] = useState([]);
+    let {btnEvent, setBtnEvent} = useState(null);
 
     useEffect(() => {
 
@@ -15,8 +16,11 @@ const Users = () => {
     },[])
 
     return (<div>
+        <h2>{btnEvent}</h2>
+        <hr/>
+        <h2>Users</h2>
 
-        {users.map(user => <User key={user.id} user={user}/>)}
+        {users.map(user => <User key={user.id} user={user} setBtnEvent={setBtnEvent}/>)}
 
         </div>);
 };

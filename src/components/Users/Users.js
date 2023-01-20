@@ -1,12 +1,9 @@
-
-
 import React, {useEffect, useState} from 'react';
+
 import {axiosUsers} from "../../services/axiosUsers";
-import User from "../User/User";
+import {User} from "../User/User";
 
 const Users = ({setIdUser}) => {
-    const [getId, setGetId] = useState(null);
-    getId && setIdUser(getId)
 
     const [users, setUsers] = useState([]);
 
@@ -19,9 +16,9 @@ const Users = ({setIdUser}) => {
     return (<div>
         <h2>Users</h2>
 
-        {users.map(user => <User key={user.id} user={user} setGetId={setGetId}/>)}
+        {users && users.map(user => <User key={user.id} user={user} setIdUser={setIdUser}/>)}
 
         </div>);
 };
 
-export default Users;
+export {Users};

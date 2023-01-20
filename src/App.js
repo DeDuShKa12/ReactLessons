@@ -1,13 +1,10 @@
-import './App.css';
-import Users from "./components/Users/Users";
-import {Posts} from "./components/Posts/Posts";
 import React, {useState} from "react";
+import './App.css';
+import {Posts, Users} from "./components";
 
 function App() {
 
     const [idUser, setIdUser] = useState(null);
-
-    console.log(idUser);
 
     return (
         <div className="App">
@@ -17,5 +14,4 @@ function App() {
         </div>
     );
 }
-
 export default App;

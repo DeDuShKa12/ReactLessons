@@ -3,16 +3,20 @@ import {useState} from "react";
 import {CarForm, Cars} from "./component";
 
 function App() {
-    const [car, setCar] = useState([]);
+
+    const [cars, setCars] = useState([]);
+
+    const [car, setCar] = useState(null);
+
 
     return (
         <div className="App">
 
-            <CarForm car={car}/>
+            <CarForm setCars={setCars} car={car}/>
 
             <hr/>
 
-            <Cars setCar={setCar}/>
+            <Cars setCars={setCars} cars={cars} setCar={setCar}/>
 
         </div>
     );

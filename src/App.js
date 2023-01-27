@@ -1,13 +1,24 @@
+import {Route, Routes} from "react-router-dom";
+
+import {AlbumsPage, CommentsPage, HomePage, NotFoundPage, TodosPage} from "./pages";
+import {MainLayout} from "./layouts";
 
 
-function App() {
-
+const App = () => {
 
     return (
-        <div className="App">
-
+        <div>
+            <Routes>
+                <Route path={'/'} element={<MainLayout/>}>
+                    <Route index element={<HomePage/>}/>
+                    <Route path={'albums'} element={<AlbumsPage/>}/>
+                    <Route path={'todos'} element={<TodosPage/>}/>
+                    <Route path={'comments'} element={<CommentsPage/>}/>
+                    <Route path={'*'} element={<NotFoundPage/>}/>
+                </Route>
+            </Routes>
         </div>
     );
 }
 
-export default App;
+export {App};

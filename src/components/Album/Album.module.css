@@ -1,0 +1,10 @@
+.album {
+    background: cadetblue;
+    width: 48%;
+    height: 100px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

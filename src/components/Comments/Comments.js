@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 import {commentsService} from "../../services";
 import {Comment} from "../Comment/Comment";
+import css from './Comments.module.css'
 
 
 const Comments = () => {
@@ -9,13 +10,12 @@ const Comments = () => {
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
-        commentsService.getAll().then(({data})=>setComments([data]))
+        commentsService.getAll().then(({data})=>setComments([...data]))
     }, [])
 
-    console.log(comments);
 
     return (
-        <div>
+        <div className={css.comments}>
             {comments.map(comment=> <Comment key={comment.id} comment={comment}/>)}
         </div>
     );

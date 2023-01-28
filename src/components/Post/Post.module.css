@@ -1,0 +1,10 @@
+.post {
+    background: cadetblue;
+    width: 90%;
+    height: 70vh;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

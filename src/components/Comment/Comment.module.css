@@ -1,0 +1,11 @@
+.comment {
+    box-sizing: border-box;
+    background: cadetblue;
+    width: 48%;
+    height: 300px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}

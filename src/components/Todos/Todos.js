@@ -11,6 +11,7 @@ const Todos = () => {
     useEffect(()=>{
         todosService.getAll().then(({data})=> setTodos([...data]))
     }, [])
+    console.log(todos);
     return (
         <div className={css.todos}>
             {todos.map(todo=> <Todo key={todo.id} todo={todo}/>)}

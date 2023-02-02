@@ -1,9 +1,21 @@
-import {Component} from 'react';
+import React from 'react';
+import {Input} from "../../components";
+import {Cats} from "../../components/Cats/Cats";
+import {Dogs} from "../../components/Dogs/Dogs";
+import css from './HomePage.module.css'
 
-class Home extends Component {
-    render() {
-        return 'Home';
-    }
-}
+const HomePage = () => {
+    return (
+        <div>
+            <Input/>
+            <hr/>
+            <div className={css.catsDogs}>
+                <Cats/>
+                <Dogs/>
+            </div>
 
-export {Home};
+        </div>
+    );
+};
+
+export {HomePage};

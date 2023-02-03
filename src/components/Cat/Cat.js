@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Cat = () => {
+const Cat = ({cat}) => {
+    const {id, name} = cat
     return (
         <div>
-            Cat
+            <div>id: {id}</div>
+            <div>name: {name}</div>
         </div>
     );
 };

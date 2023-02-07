@@ -24,4 +24,6 @@ const userAction = {
     getAll
 }
 
-export {userReducer, userAction}
+export {
+    userReducer, userAction
+}

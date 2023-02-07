@@ -1,4 +1,4 @@
-import {Header, Users} from "./components";
+
 
 
 function App() {
@@ -6,10 +6,6 @@ function App() {
 
     return (
         <div className="App">
-
-            <Header/>
-            <hr/>
-            <Users/>
 
         </div>
     );

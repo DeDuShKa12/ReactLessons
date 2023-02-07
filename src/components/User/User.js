@@ -1,9 +1,16 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
+import {userAction} from "../../redux";
 
-const User = () => {
+const User = ({user}) => {
+    const {id, name, username} = user
+    const dispatch = useDispatch();
     return (
         <div>
-            User
+            <div>id:{id}</div>
+            <div>name:{name}</div>
+            <div>username:{username}</div>
+            <button onClick={()=>dispatch(userAction.setSelectedUser(user))}>Select</button>
         </div>
     );
 };

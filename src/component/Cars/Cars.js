@@ -1,17 +1,23 @@
 import React, {useEffect} from 'react';
 import {Car} from "../Car/Car";
-import {carServices} from "../../services";
 
-const Cars = ({cars, setCars, setCar}) => {
+import {useDispatch, useSelector} from "react-redux";
+import {carActions} from "../../redux/slices";
+
+const Cars = () => {
+
+    const {cars} = useSelector(state => state.cars);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        carServices.getAll().then(({data}) => setCars([...data]))
-    },[setCars])
+        dispatch(carActions.getAll())
+    }, [dispatch])
 
     return (
         <div>
 
-            {cars.map(car=><Car key={car.id} car={car} setCar={setCar}/>)}
+            {cars && cars.map(car => <Car key={car.id} car={car}/>)}
 
         </div>
     );

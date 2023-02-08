@@ -1,4 +1,5 @@
-import {Header, Users} from "./components";
+import {Header, Posts, UsersModule} from "./components";
+import css from './App.module.css'
 
 
 function App() {
@@ -9,7 +10,10 @@ function App() {
 
             <Header/>
             <hr/>
-            <Users/>
+            <div className={css.main}>
+                <Posts/>
+                <UsersModule/>
+            </div>
 
         </div>
     );

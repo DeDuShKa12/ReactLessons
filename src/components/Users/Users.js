@@ -3,9 +3,9 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {userAction} from "../../redux";
 import {User} from "../User/User";
-import css from './style.css'
+import css from './style.module.css'
 
-const UsersModule = () => {
+const Users = () => {
 
     const dispatch = useDispatch();
 
@@ -25,4 +25,4 @@ const UsersModule = () => {
     );
 };
 
-export {UsersModule};
+export {Users};

@@ -3,6 +3,8 @@ import {carServices} from "../../services";
 
 const initialState = {
     cars: [],
+    next: null,
+    prev: null,
     error: null,
     loading: null,
     carForUpdate: null,
@@ -11,21 +13,22 @@ const initialState = {
 
 const getAll = createAsyncThunk(
     'carSlice/getAll',
-    async (_, {rejectedWithValue}) => {
+    async ({page}, thunkAPI) => {
         try {
-            const {data} = await carServices.getAll();
+            const {data} = await carServices.getAll(page);
             return data
         } catch (e) {
-            return rejectedWithValue(e.response.data)
+            return thunkAPI.rejectWithValue(e.response.data)
         }
-    });
+    }
+);
 
 const createCar = createAsyncThunk(
     'carSlice/createCar',
     async (value, thunkAPI) => {
         try {
             await carServices.create(value);
-            thunkAPI.dispatch(getAll())
+            thunkAPI.dispatch(getAll({page: 1}))
 
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data)
@@ -36,10 +39,10 @@ const createCar = createAsyncThunk(
 
 const updateCar = createAsyncThunk(
     'carSlice/updateCar',
-    async ({id, car}, thunkAPI) => {
+    async ({id}, thunkAPI) => {
         try {
-            await carServices.updateById(id, car)
-            thunkAPI.dispatch(getAll())
+            await carServices.updateById(id)
+            thunkAPI.dispatch(getAll({page: 1}))
 
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data)
@@ -53,7 +56,7 @@ const deleteById = createAsyncThunk(
     async ({id},thunkAPI )=>{
         try {
             await carServices.deleteById(id)
-            thunkAPI.dispatch(getAll())
+            thunkAPI.dispatch(getAll({page:1}))
 
         }catch (e) {
             return thunkAPI.rejectWithValue(e.response.data)
@@ -74,7 +77,10 @@ const carSlice = createSlice({
     extraReducers: builder =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                state.cars = action.payload
+                const {prev, next, items} = action.payload;
+                state.cars = items
+                state.prev = prev
+                state.next = next
                 state.loading = false
             })
             .addCase(getAll.rejected, (state, action) => {
